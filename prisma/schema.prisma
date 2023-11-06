@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  DOCTOR
+  PATIENT
+}
+
+model Organizations {
+  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name              String              @unique @db.VarChar(250)
+  created_at        DateTime            @default(now())
+  updated_at        DateTime            @updatedAt
+  userOrganizations UserOrganizations[]
+}
+
+model UserOrganizations {
+  id               String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id          String        @db.Uuid
+  organizations_id String        @db.Uuid
+  created_at       DateTime      @default(now())
+  updated_at       DateTime      @updatedAt
+  user             User          @relation(fields: [user_id], references: [id])
+  organizations    Organizations @relation(fields: [organizations_id], references: [id])
+}
+
+model User {
+  id            String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email         String              @unique @db.VarChar(250)
+  password      String              @unique @db.VarChar(250)
+  role          Role
+  first_name    String              @db.VarChar(250) @default("")
+  last_name     String              @db.VarChar(250) @default("")
+  created_at    DateTime            @default(now())
+  updated_at    DateTime            @updatedAt
+  organizations UserOrganizations[]
+  scheduleTime  ScheduleTime[]
+  appointments  Appointments[]
+}
+
+enum StatusTime {
+  BOOKED
+  AVAILABLE
+}
+
+model ScheduleTime {
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id      String         @db.Uuid
+  start_time   DateTime
+  end_time     DateTime
+  status       StatusTime     @default(AVAILABLE)
+  created_at   DateTime       @default(now())
+  updated_at   DateTime       @updatedAt
+  appointments Appointments[]
+  user         User           @relation(fields: [user_id], references: [id])
+}
+
+model Appointments {
+  id               String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id          String       @db.Uuid
+  schedule_time_id String       @db.Uuid
+  created_at       DateTime     @default(now())
+  updated_at       DateTime     @updatedAt
+  user             User         @relation(fields: [user_id], references: [id])
+  scheduleTime     ScheduleTime @relation(fields: [schedule_time_id], references: [id])
+}

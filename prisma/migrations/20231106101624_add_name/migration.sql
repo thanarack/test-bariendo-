@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "first_name" VARCHAR(250) NOT NULL DEFAULT '',
+ADD COLUMN     "last_name" VARCHAR(250) NOT NULL DEFAULT '';
