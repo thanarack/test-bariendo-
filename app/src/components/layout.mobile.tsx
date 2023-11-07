@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-
 `;
 
 const Container = styled.div`
@@ -16,6 +15,7 @@ const Container = styled.div`
   box-sizing: border-box;
   width: 480px;
   background: white;
+  position: relative;
 `;
 
 interface MyComponentProps {
