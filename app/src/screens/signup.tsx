@@ -7,15 +7,15 @@ import {
   Label,
   LinkSingUp,
   SignUpText,
-  SubHeader,
-  Header
+  Header,
+  InputGroupCheckBox,
+  CommonLink
 } from '../styles/common.style';
 
-function Login() {
+function SignUp() {
   return (
     <LayoutMobile>
-      <Header style={{ marginTop: '16px' }}>Sign In</Header>
-      <SubHeader style={{ marginTop: '16px' }}>Hi there! Nice to see you again.</SubHeader>
+      <Header style={{ marginTop: '16px' }}>Sign Up</Header>
       <From style={{ marginTop: '32px' }}>
         <InputGroup>
           <Label>Email</Label>
@@ -25,15 +25,23 @@ function Login() {
           <Label>Password</Label>
           <Input type="password" />
         </InputGroup>
+        <InputGroup>
+          <Label>Confirm Password</Label>
+          <Input type="password" />
+        </InputGroup>
+        <InputGroupCheckBox>
+          <Input type="checkbox" />
+          <Label>I agree to <CommonLink to="#">Term of Service</CommonLink> and <CommonLink to="#">Privacy Policy</CommonLink></Label>
+        </InputGroupCheckBox>
         <Button role="button" style={{ marginTop: '16px' }}>
-          Sign In
+          Continue
         </Button>
       </From>
       <SignUpText>
-        Haven't an Account? <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
+        Have an Account? <LinkSingUp to={'/'}>Sign In</LinkSingUp>
       </SignUpText>
     </LayoutMobile>
   );
 }
 
-export default Login;
+export default SignUp;

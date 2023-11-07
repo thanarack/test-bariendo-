@@ -18,6 +18,12 @@ export const Input = styled.input`
   &:hover {
     outline: none;
   }
+
+  &[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    accent-color: #ff0266;
+  }
 `;
 
 export const Label = styled.label`
@@ -55,6 +61,11 @@ export const LinkSingUp = styled(Link)`
   padding-left: 4px;
 `;
 
+export const CommonLink = styled(Link)`
+  color: #ff0266;
+  padding-left: 4px;
+`;
+
 export const Header = styled.h1`
   font-size: 24px;
   margin: 0;
@@ -64,4 +75,11 @@ export const SubHeader = styled.h2`
   font-size: 16px;
   margin: 0;
   color: #00000042;
+`
+
+export const InputGroupCheckBox = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
 `

@@ -5,11 +5,16 @@ import Login from './screens/login.tsx';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import './index.css';
+import SignUp from './screens/signup.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Login />,
+  },
+  {
+    path: '/signup',
+    element: <SignUp />,
   },
 ]);
 
