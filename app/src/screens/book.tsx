@@ -41,7 +41,7 @@ function Book() {
 
   const apiDoctors = useApiDoctors();
   const apiBook = useApiBook();
-  const apiBookList = useApiBookList();
+  const apiBookList = useApiBookList({ doctor_id: doctorId });
 
   const onSetMonth = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setMonth(String(e.target.value));

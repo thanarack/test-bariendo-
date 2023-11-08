@@ -25,7 +25,7 @@ export class AppointmentService {
     const slot = await this.prisma.appointments.findFirst({
       where: {
         slot_start: body.slot_start,
-        user_id: userInfo.user_id,
+        doctor_id: body.doctor_id,
       },
     });
     if (slot) {
@@ -46,13 +46,10 @@ export class AppointmentService {
     return appointment;
   }
 
-  async getListAppointment(
-    query: AppointmentListRequest,
-    userInfo: ITokenInfo,
-  ) {
+  async getListAppointment(query: AppointmentListRequest) {
     const result = await this.prisma.appointments.findMany({
       where: {
-        user_id: userInfo.user_id,
+        doctor_id: query.doctor_id,
       },
     });
 

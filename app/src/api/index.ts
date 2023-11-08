@@ -2,6 +2,7 @@ import api from '../util/api';
 import {
   BookCrateResponse,
   BookListRecentRequest,
+  BookListRequest,
   BookRequest,
   BookResponse,
   DoctorsResponse,
@@ -30,8 +31,8 @@ export const getDoctors = (): Promise<DoctorsResponse> => {
   return api.get('/appointment/doctor/list');
 };
 
-export const getBookList = (): Promise<BookResponse> => {
-  return api.get('/appointment/book/list');
+export const getBookList = (params: BookListRequest): Promise<BookResponse> => {
+  return api.get('/appointment/book/list', { params });
 };
 
 export const getBookListRecent = (

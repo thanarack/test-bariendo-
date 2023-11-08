@@ -32,9 +32,8 @@ export class AppointmentController {
 
   @Get('book/list')
   @UseInterceptors(TokenInterceptor)
-  async list(@Query() query: AppointmentListRequest, @Req() req: any) {
-    const userInfo: ITokenInfo = req.user_info;
-    return this.appointmentService.getListAppointment(query, userInfo);
+  async list(@Query() query: AppointmentListRequest) {
+    return this.appointmentService.getListAppointment(query);
   }
 
   @Get('book/list/recent')

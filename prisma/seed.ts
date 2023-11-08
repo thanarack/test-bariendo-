@@ -142,6 +142,75 @@ const mockUserDoctorOrganizations: Prisma.UserOrganizationsCreateInput[] = [
   },
 ];
 
+const mockUserPatient: Prisma.UserCreateInput[] = [
+  {
+    id: '6cbe5b96-2043-4683-9c39-bcfa86e40155',
+    email: 'user1@mail.com',
+    password: '$2b$10$MYFj0gLjXgUwrg/HrNMqR.3vXXPlxTaMEgo2POyqJJeO1K3.lNoKa',
+    role: 'PATIENT',
+    first_name: 'User Test 1',
+    last_name: 'Bank',
+  },
+  {
+    id: '53f0d80e-319f-4dbe-93d5-818c65128a87',
+    email: 'user2@mail.com',
+    password: '$2b$10$MYFj0gLjXgUwrg/HrNMqR.3vXXPlxTaMEgo2POyqJJeO1K3.lNoKa',
+    role: 'PATIENT',
+    first_name: 'User Test 2',
+    last_name: 'Ter',
+  },
+  {
+    id: 'a722098c-826b-4d32-8c0b-ec12b7d3b29d',
+    email: 'user3@mail.com',
+    password: '$2b$10$MYFj0gLjXgUwrg/HrNMqR.3vXXPlxTaMEgo2POyqJJeO1K3.lNoKa',
+    role: 'PATIENT',
+    first_name: 'User Test 3',
+    last_name: 'Max',
+  },
+];
+
+const mockUserPatientOrganizations: Prisma.UserOrganizationsCreateInput[] = [
+  {
+    id: 'cb130e43-61aa-4261-a9ec-2a406518a806',
+    organizations: {
+      connect: {
+        id: mockOrganizations[0].id,
+      },
+    },
+    user: {
+      connect: {
+        id: mockUserPatient[0].id,
+      },
+    },
+  },
+  {
+    id: '4b5b9188-a340-43f5-b5a8-3a2c570d90e2',
+    organizations: {
+      connect: {
+        id: mockOrganizations[1].id,
+      },
+    },
+    user: {
+      connect: {
+        id: mockUserPatient[1].id,
+      },
+    },
+  },
+  {
+    id: 'f7c0dcce-38eb-4d03-beee-8727f3fa9a64',
+    organizations: {
+      connect: {
+        id: mockOrganizations[2].id,
+      },
+    },
+    user: {
+      connect: {
+        id: mockUserPatient[2].id,
+      },
+    },
+  },
+];
+
 async function main() {
   // Mock doctor type
   for (const item of mockDoctorType) {
@@ -172,6 +241,24 @@ async function main() {
 
   // Mock doctors organizations
   for (const item of mockUserDoctorOrganizations) {
+    await prisma.userOrganizations.upsert({
+      where: { id: item.id },
+      create: item,
+      update: item,
+    });
+  }
+
+  // Mock patient
+  for (const item of mockUserPatient) {
+    await prisma.user.upsert({
+      where: { id: item.id },
+      create: item,
+      update: item,
+    });
+  }
+
+  // Mock patient organizations
+  for (const item of mockUserPatientOrganizations) {
     await prisma.userOrganizations.upsert({
       where: { id: item.id },
       create: item,
