@@ -1,0 +1,9 @@
+{
+  "name": "test-bariendo-",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:thanarack/test-bariendo-.git",
+  "author": "Thanarack <thanarackc@gmail.com>",
+  "scripts": {},
+  "license": "MIT"
+}

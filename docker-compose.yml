@@ -1,5 +1,15 @@
 version: '3'
 services:
+  nestjs:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
   db:
     image: postgres
     environment:
@@ -9,4 +19,4 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - '5432:5432'
