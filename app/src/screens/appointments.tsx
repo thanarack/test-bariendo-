@@ -2,7 +2,7 @@ import AppointmentItem from '../components/appointment.item';
 import LayoutMobile from '../components/layout.mobile';
 import {
   DateTitle,
-  FloatIcon,
+  FloatRightIcon,
   IconLogout,
   IconPlus,
   Navbar, NewBookingButton, Title, WarpButton
@@ -16,7 +16,7 @@ function Appointments() {
         <div />
         <Title>Booked Appointment</Title>
         <div>
-          <FloatIcon><IconLogout /></FloatIcon>
+          <FloatRightIcon><IconLogout /></FloatRightIcon>
         </div>
       </Navbar>
 

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import SignUp from './screens/signup.tsx';
 import Appointments from './screens/appointments.tsx';
+import Book from './screens/book.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/appointments',
     element: <Appointments />,
+  },
+  {
+    path: '/book',
+    element: <Book />,
   },
 ]);
 

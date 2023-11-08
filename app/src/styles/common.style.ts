@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { IoIosPin } from 'react-icons/io';
 import { FiLogOut } from 'react-icons/fi';
 import { AiOutlinePlus } from 'react-icons/ai';
+import {BsArrowLeft} from 'react-icons/bs'
 
 export const From = styled.form`
   display: flex;
@@ -43,12 +44,13 @@ export const InputGroup = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 10px 0;
+  padding: 14px 0;
   border: 0;
   background: #ff0266;
   color: white;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
 `;
 
 export const SignUpText = styled.div`
@@ -100,13 +102,31 @@ export const Title = styled.h1`
   margin: 0;
 `
 
+export const Title3Light = styled.h1`
+  font-size: 18px;
+  margin: 0;
+  font-weight: normal;
+`
+
+export const Title2Light = styled.h1`
+  font-size: 14px;
+  margin: 0;
+  font-weight: normal;
+`
+
 export const SvgIcon = styled.svg`
   color: #ff0266;
   width: 20px;
   height: 20px;
 `
 
-export const FloatIcon = styled.div`
+export const FloatLeftIcon = styled.div`
+  position: absolute;
+  left: 0;
+  transform: translateY(calc(-50% + 2px));
+`
+
+export const FloatRightIcon = styled.div`
   position: absolute;
   right: 0;
   transform: translateY(calc(-50% + 2px));
@@ -167,6 +187,12 @@ export const IconPlus = styled(AiOutlinePlus)`
   height: 20px;
 `
 
+export const IconLeftArrow = styled(BsArrowLeft)`
+  color: #ff0266;
+  width: 20px;
+  height: 20px;
+`
+
 export const ApLocation = styled.div`
   flex-direction: row;
   display: flex;
@@ -188,7 +214,7 @@ export const NewBookingButton = styled.button`
   background: #ff0266;
   color: white;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 14px 0;
   min-width: 100%;
   border: 0;
   cursor: pointer;
@@ -196,4 +222,96 @@ export const NewBookingButton = styled.button`
   gap: 6px;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+`
+
+export const Select = styled.select`
+  padding: 12px 8px;
+  background: #f2f2f2;
+  width: 100%;
+  border-radius: 6px;
+  border: 0;
+  >
+`
+
+export const SelectGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
+export const SelectBoxDate = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: 8px;
+  width: 100%;
+`
+
+export const DateBox = styled.div<{isSelect?: boolean}>`
+  flex-basis: 64px;
+  height: 64px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f2;
+  font-size: 14px;
+  border-radius: 8px;
+  border-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  ${props => props.isSelect && `
+    border-color: #ff0266;
+  `}
+`
+
+export const DragBox = styled.div`
+  position: relative;
+  cursor: move;
+`
+
+export const WarpDrag = styled.div`
+  overflow: hidden;
+  width: 100%;
+`
+
+export const Hr = styled.hr`
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 16px 0;
+`
+
+export const SelectTimeBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-flow: row wrap;
+  gap: 14px;
+`
+
+export const TimeBox = styled.div<{isActive?: boolean}>`
+  flex-basis: 30%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  cursor: pointer;
+  border-color: #00000042;
+  border-width: 2px;
+  border-style: solid;
+
+  ${props => props.isActive && `
+    border-color: #ff0266;
+  `}
+`
+
+export const NoSlotTime = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
 `
