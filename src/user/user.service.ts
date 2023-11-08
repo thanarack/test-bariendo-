@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { User } from '@prisma/client';
+import { DoctorType, User } from '@prisma/client';
 import { RegisterBody } from 'src/interface/register';
 
 @Injectable()
@@ -9,8 +9,15 @@ export class UserService {
   constructor(private prisma: PrismaService) {}
 
   async create(body: RegisterBody): Promise<User> {
-    const { password, email, role, organizations, first_name, last_name } =
-      body;
+    const {
+      password,
+      email,
+      role,
+      organizations,
+      first_name,
+      last_name,
+      doctor_type_id,
+    } = body;
 
     // Generate Hash password
     const saltRounds = 10;
@@ -27,6 +34,7 @@ export class UserService {
           role,
           first_name,
           last_name,
+          doctor_type_id,
         },
       });
 
@@ -48,10 +56,13 @@ export class UserService {
     return user;
   }
 
-  async findByEmail(email: string): Promise<User> {
+  async findByEmail(email: string): Promise<User & { doctorType: DoctorType }> {
     const user = this.prisma.user.findFirst({
       where: {
         email,
+      },
+      include: {
+        doctorType: true,
       },
     });
     return user;

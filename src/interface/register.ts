@@ -7,4 +7,5 @@ export interface RegisterBody {
   last_name: string;
   role: Role;
   organizations: string[];
+  doctor_type_id: string;
 }

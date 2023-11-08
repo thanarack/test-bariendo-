@@ -49,6 +49,7 @@ export class UserController {
           id: user.id,
           email: user.email,
           role: user.role,
+          doctor_type: user?.doctorType?.name,
         },
       };
 

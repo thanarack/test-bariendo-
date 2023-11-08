@@ -6,6 +6,6 @@ export class ScheduleService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getDoctorSchedule(user_id: string) {
-    return this.prisma.scheduleTime.findMany({ where: { user_id } });
+    return this.prisma.appointments.findMany({ where: { user_id } });
   }
 }

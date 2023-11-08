@@ -18,7 +18,7 @@ enum Role {
 
 model Organizations {
   id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name              String              @unique @db.VarChar(250)
+  name              String              @db.VarChar(250)
   created_at        DateTime            @default(now())
   updated_at        DateTime            @updatedAt
   userOrganizations UserOrganizations[]
@@ -34,43 +34,37 @@ model UserOrganizations {
   organizations    Organizations @relation(fields: [organizations_id], references: [id])
 }
 
+model DoctorType {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String   @db.VarChar(250)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  users      User[]
+}
+
 model User {
-  id            String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  email         String              @unique @db.VarChar(250)
-  password      String              @unique @db.VarChar(250)
-  role          Role
-  first_name    String              @db.VarChar(250) @default("")
-  last_name     String              @db.VarChar(250) @default("")
-  created_at    DateTime            @default(now())
-  updated_at    DateTime            @updatedAt
-  organizations UserOrganizations[]
-  scheduleTime  ScheduleTime[]
-  appointments  Appointments[]
-}
-
-enum StatusTime {
-  BOOKED
-  AVAILABLE
-}
-
-model ScheduleTime {
-  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  user_id      String         @db.Uuid
-  start_time   DateTime
-  end_time     DateTime
-  status       StatusTime     @default(AVAILABLE)
-  created_at   DateTime       @default(now())
-  updated_at   DateTime       @updatedAt
-  appointments Appointments[]
-  user         User           @relation(fields: [user_id], references: [id])
+  id                 String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email              String              @unique @db.VarChar(250)
+  password           String              @db.VarChar(250)
+  role               Role
+  first_name         String              @default("") @db.VarChar(250)
+  last_name          String              @default("") @db.VarChar(250)
+  created_at         DateTime            @default(now())
+  updated_at         DateTime            @updatedAt
+  doctor_type_id     String?             @db.Uuid
+  doctorType         DoctorType?         @relation(fields: [doctor_type_id], references: [id])
+  organizations      UserOrganizations[]
+  userAppointments   Appointments[]      @relation(name: "user")
+  doctorAppointments Appointments[]      @relation(name: "doctor")
 }
 
 model Appointments {
-  id               String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  user_id          String       @db.Uuid
-  schedule_time_id String       @db.Uuid
-  created_at       DateTime     @default(now())
-  updated_at       DateTime     @updatedAt
-  user             User         @relation(fields: [user_id], references: [id])
-  scheduleTime     ScheduleTime @relation(fields: [schedule_time_id], references: [id])
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id    String   @db.Uuid
+  doctor_id  String   @db.Uuid
+  slot_start DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  user       User     @relation(fields: [user_id], references: [id], name: "user")
+  doctor     User     @relation(fields: [doctor_id], references: [id], name: "doctor")
 }

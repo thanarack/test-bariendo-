@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { IoIosPin } from 'react-icons/io';
 import { FiLogOut } from 'react-icons/fi';
 import { AiOutlinePlus } from 'react-icons/ai';
-import {BsArrowLeft} from 'react-icons/bs'
+import { BsArrowLeft } from 'react-icons/bs';
 
 export const From = styled.form`
   display: flex;
@@ -51,6 +51,10 @@ export const Button = styled.button`
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  &:disabled {
+    background: #e0e0e0;
+    cursor: not-allowed;
+  }
 `;
 
 export const SignUpText = styled.div`
@@ -74,20 +78,20 @@ export const CommonLink = styled(Link)`
 export const Header = styled.h1`
   font-size: 24px;
   margin: 0;
-`
+`;
 
 export const SubHeader = styled.h2`
   font-size: 16px;
   margin: 0;
   color: #00000042;
-`
+`;
 
 export const InputGroupCheckBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
   gap: 8px;
-`
+`;
 
 export const Navbar = styled.nav`
   display: flex;
@@ -95,42 +99,43 @@ export const Navbar = styled.nav`
   align-items: center;
   padding: 16px;
   position: relative;
-`
+`;
 
 export const Title = styled.h1`
   font-size: 16px;
   margin: 0;
-`
+`;
 
 export const Title3Light = styled.h1`
   font-size: 18px;
   margin: 0;
   font-weight: normal;
-`
+`;
 
 export const Title2Light = styled.h1`
   font-size: 14px;
   margin: 0;
   font-weight: normal;
-`
+`;
 
 export const SvgIcon = styled.svg`
   color: #ff0266;
   width: 20px;
   height: 20px;
-`
+`;
 
 export const FloatLeftIcon = styled.div`
   position: absolute;
   left: 0;
   transform: translateY(calc(-50% + 2px));
-`
+`;
 
 export const FloatRightIcon = styled.div`
   position: absolute;
   right: 0;
   transform: translateY(calc(-50% + 2px));
-`
+  cursor: pointer;
+`;
 
 export const DateTitle = styled.h3`
   font-size: 12px;
@@ -140,13 +145,13 @@ export const DateTitle = styled.h3`
   text-align: center;
   margin-bottom: 8px;
   font-weight: normal;
-`
+`;
 
 export const CardGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-`
+`;
 
 export const CardAppointment = styled.div`
   display: flex;
@@ -156,49 +161,49 @@ export const CardAppointment = styled.div`
   flex-direction: column;
   font-size: 14px;
   gap: 8px;
-`
+`;
 
 export const ApBoxLine = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
+`;
 
 export const ApType = styled.span`
   color: #7a7a7a;
-  font-size:12px;
-`
+  font-size: 12px;
+`;
 
 export const IconPin = styled(IoIosPin)`
   color: #ff0266;
   width: 20px;
   height: 20px;
-`
+`;
 
 export const IconLogout = styled(FiLogOut)`
   color: #ff0266;
   width: 20px;
   height: 20px;
-`
+`;
 
 export const IconPlus = styled(AiOutlinePlus)`
   color: #fff;
   width: 20px;
   height: 20px;
-`
+`;
 
 export const IconLeftArrow = styled(BsArrowLeft)`
   color: #ff0266;
   width: 20px;
   height: 20px;
-`
+`;
 
 export const ApLocation = styled.div`
   flex-direction: row;
   display: flex;
   align-items: center;
   gap: 4px;
-`
+`;
 
 export const WarpButton = styled.div`
   padding: 0 32px;
@@ -208,7 +213,7 @@ export const WarpButton = styled.div`
   position: absolute;
   bottom: 16px;
   left: 0;
-`
+`;
 
 export const NewBookingButton = styled.button`
   background: #ff0266;
@@ -224,7 +229,11 @@ export const NewBookingButton = styled.button`
   justify-content: center;
   font-size: 14px;
   font-weight: bold;
-`
+  &:disabled {
+    background: #e0e0e0;
+    cursor: not-allowed;
+  }
+`;
 
 export const Select = styled.select`
   padding: 12px 8px;
@@ -233,13 +242,13 @@ export const Select = styled.select`
   border-radius: 6px;
   border: 0;
   >
-`
+`;
 
 export const SelectGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`
+`;
 
 export const SelectBoxDate = styled.div`
   display: flex;
@@ -247,9 +256,9 @@ export const SelectBoxDate = styled.div`
 
   gap: 8px;
   width: 100%;
-`
+`;
 
-export const DateBox = styled.div<{isSelect?: boolean}>`
+export const DateBox = styled.div<{ isSelect?: boolean }>`
   flex-basis: 64px;
   height: 64px;
   flex-grow: 0;
@@ -264,26 +273,28 @@ export const DateBox = styled.div<{isSelect?: boolean}>`
   border-color: transparent;
   border-width: 2px;
   border-style: solid;
-  ${props => props.isSelect && `
+  ${(props) =>
+    props.isSelect &&
+    `
     border-color: #ff0266;
   `}
-`
+`;
 
 export const DragBox = styled.div`
   position: relative;
   cursor: move;
-`
+`;
 
 export const WarpDrag = styled.div`
   overflow: hidden;
   width: 100%;
-`
+`;
 
 export const Hr = styled.hr`
   border: 0;
   border-top: 1px solid #e0e0e0;
   margin: 16px 0;
-`
+`;
 
 export const SelectTimeBox = styled.div`
   display: flex;
@@ -291,9 +302,9 @@ export const SelectTimeBox = styled.div`
   justify-content: start;
   flex-flow: row wrap;
   gap: 14px;
-`
+`;
 
-export const TimeBox = styled.div<{isActive?: boolean}>`
+export const TimeBox = styled.div<{ isActive?: boolean; disabled?: boolean }>`
   flex-basis: 30%;
   padding: 10px 0;
   display: flex;
@@ -305,13 +316,63 @@ export const TimeBox = styled.div<{isActive?: boolean}>`
   border-width: 2px;
   border-style: solid;
 
-  ${props => props.isActive && `
+  ${(props) =>
+    props.isActive &&
+    `
     border-color: #ff0266;
   `}
-`
+
+  ${(props) =>
+    props.disabled &&
+    `
+    opacity: 0.2;
+    cursor: not-allowed;
+    pointer-events: none;
+  `}
+`;
 
 export const NoSlotTime = styled.div`
   display: flex;
   justify-content: center;
   font-size: 16px;
+`;
+
+export const LoginError = styled.div`
+  color: red;
+  font-size: 12px;
+  padding: 16px 0;
+  font-weight: bold;
+`;
+
+export const CheckBoxItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  > span {
+    font-size: 14px;
+    color: #000;
+    font-weight: normal;
+  }
+`;
+
+export const CheckBoxGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+
+export const AppointmentGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `
+
+export const WarpScroll = styled.div`
+  overflow-y: scroll;
+  max-height: 90vh;
+  padding-bottom: 64px;
+  box-sizing: border-box;
+  padding-right: 8px;
+`;
