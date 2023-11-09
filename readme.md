@@ -2,6 +2,8 @@
 #### Start run this docker command
 
 ```docker compose up -d```
+ - After that you can enter link below to play.
+ - Enjoy xD.
 
 #### URL
 >[http://localhost:5173](http://localhost:5173)
