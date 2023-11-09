@@ -15,13 +15,21 @@ To stop run application, just run this command
 ## Username
 Doctor
 - doctor1@mail.com
+  - google.com
+  - twitter.com
+  - facebook.com
 - doctor2@mail.com
+  - facebook.com
 - doctor3@mail.com
+  - google.com
 
 Patient
 - user1@mail.com
+  - google.com
 - user2@mail.com
+  - twitter.com
 - user3@mail.com
+  - facebook.com
 
 **All Password is : 12345**
 ---
