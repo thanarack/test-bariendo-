@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -32,7 +32,7 @@ const mockDoctorType = [
   },
 ];
 
-const mockUserDoctor: Prisma.UserCreateInput[] = [
+const mockUserDoctor: any = [
   {
     id: 'c1eeb862-15d8-423a-86b2-00073a2c3e0c',
     email: 'doctor1@mail.com',
@@ -74,7 +74,7 @@ const mockUserDoctor: Prisma.UserCreateInput[] = [
   },
 ];
 
-const mockUserDoctorOrganizations: Prisma.UserOrganizationsCreateInput[] = [
+const mockUserDoctorOrganizations = [
   {
     id: '4290dcc7-4376-4d29-b4d6-40a6bbc5e44b',
     organizations: {
@@ -142,7 +142,7 @@ const mockUserDoctorOrganizations: Prisma.UserOrganizationsCreateInput[] = [
   },
 ];
 
-const mockUserPatient: Prisma.UserCreateInput[] = [
+const mockUserPatient: any = [
   {
     id: '6cbe5b96-2043-4683-9c39-bcfa86e40155',
     email: 'user1@mail.com',
@@ -169,7 +169,7 @@ const mockUserPatient: Prisma.UserCreateInput[] = [
   },
 ];
 
-const mockUserPatientOrganizations: Prisma.UserOrganizationsCreateInput[] = [
+const mockUserPatientOrganizations: any = [
   {
     id: 'cb130e43-61aa-4261-a9ec-2a406518a806',
     organizations: {
