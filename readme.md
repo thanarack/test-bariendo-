@@ -8,7 +8,7 @@
 #### URL
 >[http://localhost:5173](http://localhost:5173)
 
-To stop run application run this command
+To stop run application, just run this command
 ```docker compose down```
 
 
